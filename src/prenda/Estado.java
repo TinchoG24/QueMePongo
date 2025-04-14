@@ -1,3 +1,4 @@
+package prenda;
 
 /**
  * Enum representing the state of a clothing item.

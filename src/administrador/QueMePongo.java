@@ -1,12 +1,18 @@
+package administrador;
+
+import factores.FactorClimatico;
+import factores.FactorEstetico;
+import prenda.Prenda;
+import prenda.Tipo;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * QueMePongo class provides outfit suggestions based on the weather.
+ * administrador.QueMePongo class provides outfit suggestions based on the weather.
  * This is a simple implementation that returns a static outfit suggestion.
  */
 public class QueMePongo {
-  Armario armario = new Armario();
+  Armario armario = new Armario(100);
 
   /**
    * funcion de Login simple user y pass ingreso con scanner
@@ -27,9 +33,9 @@ public class QueMePongo {
    * Menu (switch)
    * 1. Login
    * 2. Register
-   * 3. Cargar Prenda
+   * 3. Cargar prenda.Prenda
    * 4. Mostrar Prendas
-   * 5. Generar Outfit
+   * 5. Generar administrador.Outfit
    * 6. Exit
    */
   public void menu() {
@@ -40,9 +46,9 @@ public class QueMePongo {
       System.out.println("Menu:");
       System.out.println("1. Login");
       System.out.println("2. Register");
-      System.out.println("3. Cargar Prenda");
+      System.out.println("3. Cargar prenda.Prenda");
       System.out.println("4. Mostrar Prendas");
-      System.out.println("5. Generar Outfit");
+      System.out.println("5. Generar Outfits");
       System.out.println("6. Exit");
       System.out.print("Enter your choice: ");
       choice = scanner.nextInt();
@@ -56,7 +62,7 @@ public class QueMePongo {
           System.out.println("Proximamente...");
           break;
         case 3:
-          // Cargar Prenda logic here
+          // Cargar prenda.Prenda logic here
           cargarPrenda();
           break;
         case 4:
@@ -121,7 +127,7 @@ public class QueMePongo {
       for (Outfit outfit : outfitGenerados) {
         System.out.println("Outfit generado:");
         outfit.mostrarOutfit();
-        System.out.println("---------------------");
+        System.out.println("-----------OUTFIT-------------");
       }
     } else {
       System.out.println("No se pudo generar un outfit completo con los criterios dados.");
@@ -150,18 +156,17 @@ public class QueMePongo {
 
     /**
      * Metodo para validar que el tipo de prenda es correcto parametro que paso a
-     * Tipo.valueOf(tipo.toUpperCase()) Try
+     * prenda.Tipo.valueOf(tipo.toUpperCase()) Try
      * Proximamente se extiende a que el color y material sean correctos (Enum)
      */
     try {
       Tipo.valueOf(tipo.toUpperCase());
     } catch (IllegalArgumentException e) {
-      System.out.println("Tipo de prenda no valido");
+      System.out.println("prenda.Tipo de prenda no valido");
       return;
     }
 
     prenda = new Prenda(nombre,
-        Tipo.valueOf(tipo.toUpperCase()).getCategoria(),
         Tipo.valueOf(tipo.toUpperCase()),
         colorPrincipal,
         colorSecundario,

@@ -1,3 +1,5 @@
+package factores;
+
 /**
  * Enum que representa los diferentes factores climáticos.
  */

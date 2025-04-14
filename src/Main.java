@@ -1,7 +1,8 @@
+import administrador.QueMePongo;
 
 /**
- * Main class to run the QueMePongo application.
- * This class creates an instance of the QueMePongo class and calls its method to get an outfit suggestion.
+ * Main class to run the administrador.QueMePongo application.
+ * This class creates an instance of the administrador.QueMePongo class and calls its method to get an outfit suggestion.
  */
 public class Main {
   /**
@@ -11,7 +12,7 @@ public class Main {
    */
   public static void main(String[] args) {
 
-    // Create a new instance of the QueMePongo class
+    // Create a new instance of the administrador.QueMePongo class
     QueMePongo queMePongo = new QueMePongo();
     queMePongo.login();
     queMePongo.menu();

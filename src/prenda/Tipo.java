@@ -1,3 +1,8 @@
+package prenda;
+
+import factores.FactorClimatico;
+import factores.FactorEstetico;
+
 /**
  * Tipos de prendas con su categoria asociada
  */

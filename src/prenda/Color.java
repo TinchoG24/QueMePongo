@@ -1,3 +1,5 @@
+package prenda;
+
 /**
  * Enum representing different colors.
  */

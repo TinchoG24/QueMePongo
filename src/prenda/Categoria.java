@@ -1,3 +1,5 @@
+package prenda;
+
 /**
  * Enum representing different clothing categories.
  * This enum is used to categorize clothing items.

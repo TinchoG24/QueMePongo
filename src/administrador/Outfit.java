@@ -1,3 +1,7 @@
+package administrador;
+
+import prenda.Prenda;
+
 /**
  * Clase que representa un conjunto de prendas de vestir.
  */
@@ -8,7 +12,7 @@ public class Outfit {
   private Prenda accesorio;
 
   /**
-   * Constructor de la clase Outfit.
+   * Constructor de la clase administrador.Outfit.
    *
    * @param parteSuperior Prenda de la parte superior.
    * @param parteInferior Prenda de la parte inferior.
@@ -35,4 +39,6 @@ public class Outfit {
     System.out.println("Accesorio: ");
     accesorio.mostrarPrenda();
   }
+
+
 }

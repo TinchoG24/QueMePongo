@@ -25,7 +25,7 @@ Como primer paso para generar los atuendos, les usuaries de **QuéMePongo** iden
 
 Al consultar más sobre este requerimiento general, logramos descomponerlo en:
 
-- **Tipo de prenda**  
+- **prenda.Tipo de prenda**  
   Como usuarie de QuéMePongo, quiero especificar qué tipo de prenda estoy cargando (zapatos, camisa de mangas cortas, pantalón, etc).
 
 - **Categoría de prenda**  
@@ -34,10 +34,10 @@ Al consultar más sobre este requerimiento general, logramos descomponerlo en:
 - **Tela o material**  
   Como usuarie de QuéMePongo, quiero poder indicar de qué tela o material está hecha una prenda.
 
-- **Color principal**  
+- **prenda.Color principal**  
   Como usuarie de QuéMePongo, quiero poder indicar un color principal para mis prendas.
 
-- **Color secundario**  
+- **prenda.Color secundario**  
   Como usuarie de QuéMePongo, quiero poder indicar, si existe, un color secundario para mis prendas.
 
 - **Prendas completas**  

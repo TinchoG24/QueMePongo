@@ -1,15 +1,23 @@
+package administrador;
+
+import static administrador.GeneradorDePrendas.generarLoteDePrendas;
+
+import factores.FactorClimatico;
+import factores.FactorEstetico;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import prenda.Prenda;
 
 /**
  * Clase que representa un armario.
  */
 public class Armario {
   List<Prenda> prendas = new ArrayList<>();
+  private int cantidad;
 
   /**
-   * Constructor de la clase Armario.
+   * Constructor de la clase administrador.
    *
    * @param prendas Lista de prendas que contiene el armario.
    */
@@ -20,8 +28,8 @@ public class Armario {
   /**
    * Constructor sin parametros
    */
-  public Armario() {
-
+  public Armario(int cantidad) {
+    cargarPrendas(cantidad);
   }
 
 
@@ -44,9 +52,6 @@ public class Armario {
       System.out.println("Color Principal: " + prenda.getColorPrincipal());
       System.out.println("Color Secundario: " + prenda.getColorSecundario());
       System.out.println("Material: " + prenda.getMaterial());
-      System.out.println("Categoria: " + prenda.getTipo().getCategoria());
-      System.out.println("Factor Climático: " + prenda.getTipo().getFactorClimatico());
-      System.out.println("Factor Estético: " + prenda.getTipo().getFactorEstetico());
       System.out.println("---------------------");
     }
   }
@@ -108,4 +113,13 @@ public class Armario {
 
     return outfits;
   }
+
+  /**
+   * Lote de prendas para carga inicial
+   */
+  public void cargarPrendas(int cantidad) {
+    prendas.addAll(generarLoteDePrendas(cantidad));
+  }
+
+
 }

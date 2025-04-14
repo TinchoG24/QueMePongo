@@ -1,28 +1,27 @@
+package prenda;
+
 /**
  * Clase que representa una prenda de vestir.
  */
 public class Prenda {
   private String nombre;
-  private Categoria categoria;
   private Tipo tipo;
   private String colorPrincipal;
   private String colorSecundario;
   private String material;
 
   /**
-   * Constructor de la clase Prenda.
+   * Constructor de la clase prenda.Prenda.
    *
    * @param nombre          Nombre de la prenda.
-   * @param categoria       Categoría de la prenda.
-   * @param tipo            Tipo de la prenda.
-   * @param colorPrincipal  Color principal de la prenda.
-   * @param colorSecundario Color secundario de la prenda.
-   * @param material        Material de la prenda.
+   * @param tipo            prenda.Tipo de la prenda.
+   * @param colorPrincipal  prenda.Color principal de la prenda.
+   * @param colorSecundario prenda.Color secundario de la prenda.
+   * @param material        prenda.Material de la prenda.
    */
-  public Prenda(String nombre, Categoria categoria, Tipo tipo, String colorPrincipal,
+  public Prenda(String nombre, Tipo tipo, String colorPrincipal,
                 String colorSecundario, String material) {
     this.nombre = nombre;
-    this.categoria = categoria;
     this.tipo = tipo;
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
@@ -36,10 +35,6 @@ public class Prenda {
 
   public String getNombre() {
     return nombre;
-  }
-
-  public Categoria getCategoria() {
-    return categoria;
   }
 
   public String getColorPrincipal() {
@@ -63,10 +58,8 @@ public class Prenda {
     System.out.println("Color Principal: " + colorPrincipal);
     System.out.println("Color Secundario: " + colorSecundario);
     System.out.println("Material: " + material);
-    System.out.println("Categoría: " + categoria);
-    System.out.println("Factor Climático: " + tipo.getFactorClimatico());
-    System.out.println("Factor Estético: " + tipo.getFactorEstetico());
     System.out.println("---------------------");
   }
+
 
 }

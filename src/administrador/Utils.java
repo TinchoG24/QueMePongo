@@ -1,3 +1,7 @@
+package administrador;
+
+import java.util.Random;
+
 /**
  * This class contains utility methods for the application.
  * Currently, it is empty but can be expanded in the future.
@@ -20,6 +24,18 @@ public class Utils {
       System.out.println(mensajeError);
       return false;
     }
+  }
+
+  /**
+   * Returns a random enum constant from the specified enum class.
+   *
+   * @param enumClass The enum class to get a random constant from.
+   * @param <T>       The type of the enum.
+   * @return A random enum constant of the specified type.
+   */
+  public static <T extends Enum<?>> T getRandomEnum(Class<T> enumClass) {
+    T[] valores = enumClass.getEnumConstants();
+    return valores[new Random().nextInt(valores.length)];
   }
 
 
