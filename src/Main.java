@@ -10,14 +10,12 @@ public class Main {
    * @param args command line arguments
    */
   public static void main(String[] args) {
+
     // Create a new instance of the QueMePongo class
     QueMePongo queMePongo = new QueMePongo();
+    queMePongo.login();
+    queMePongo.menu();
 
-    // Call the method to get the outfit suggestion
-    String outfitSuggestion = queMePongo.getOutfitSuggestion();
-
-    // Print the outfit suggestion
-    System.out.println("Suggested outfit: " + outfitSuggestion);
   }
 
 }
