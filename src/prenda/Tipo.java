@@ -12,12 +12,19 @@ public enum Tipo {
   CHAQUETA(Categoria.PARTE_SUPERIOR, FactorClimatico.FRIO, FactorEstetico.FORMAL),
   ABRIGO(Categoria.PARTE_SUPERIOR, FactorClimatico.FRIO, FactorEstetico.INFORMAL),
   SUETER(Categoria.PARTE_SUPERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
+  CAMISETA(Categoria.PARTE_SUPERIOR, FactorClimatico.CALOR, FactorEstetico.CASUAL),
+  POLERA(Categoria.PARTE_SUPERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
+  BUZO(Categoria.PARTE_SUPERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
 
   PANTALON(Categoria.PARTE_INFERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
   JEANS(Categoria.PARTE_INFERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
   BERMUDA(Categoria.PARTE_INFERIOR, FactorClimatico.CALOR, FactorEstetico.CASUAL),
   SHORT(Categoria.PARTE_INFERIOR, FactorClimatico.CALOR, FactorEstetico.INFORMAL),
   FALDA(Categoria.PARTE_INFERIOR, FactorClimatico.CALOR, FactorEstetico.CASUAL),
+  LEGGINGS(Categoria.PARTE_INFERIOR, FactorClimatico.FRIO, FactorEstetico.CASUAL),
+  PANTALON_CORTO(Categoria.PARTE_INFERIOR, FactorClimatico.CALOR, FactorEstetico.CASUAL),
+  PANTALON_DE_TREKKING(Categoria.PARTE_INFERIOR, FactorClimatico.TODOS, FactorEstetico.DEPORTIVO),
+  PANTALON_DE_TREKKING_CORTO(Categoria.PARTE_INFERIOR, FactorClimatico.TODOS, FactorEstetico.DEPORTIVO),
 
   ZAPATOS(Categoria.CALZADO, FactorClimatico.FRIO, FactorEstetico.FORMAL),
   BOTAS(Categoria.CALZADO, FactorClimatico.FRIO, FactorEstetico.FORMAL),
@@ -26,11 +33,16 @@ public enum Tipo {
   ZAPATILLAS_DEPORTIVAS(Categoria.CALZADO, FactorClimatico.TODOS, FactorEstetico.DEPORTIVO),
   ZAPATILLAS_DE_CASUAL(Categoria.CALZADO, FactorClimatico.TODOS, FactorEstetico.CASUAL),
   ZAPATILLAS_DE_TREKKING(Categoria.CALZADO, FactorClimatico.TODOS, FactorEstetico.DEPORTIVO),
+  ZAPAS(Categoria.CALZADO, FactorClimatico.TODOS, FactorEstetico.DEPORTIVO),
 
   PANUELO(Categoria.ACCESORIO, FactorClimatico.FRIO, FactorEstetico.CASUAL),
   BUFANDA(Categoria.ACCESORIO, FactorClimatico.FRIO, FactorEstetico.CASUAL),
   GORRA(Categoria.ACCESORIO, FactorClimatico.CALOR, FactorEstetico.CASUAL),
   GORRO(Categoria.ACCESORIO, FactorClimatico.FRIO, FactorEstetico.CASUAL),
+  GAFAS_DE_SOL(Categoria.ACCESORIO, FactorClimatico.CALOR, FactorEstetico.CASUAL),
+  GAFAS_DE_NIEVE(Categoria.ACCESORIO, FactorClimatico.FRIO, FactorEstetico.CASUAL),
+  GAFAS_DE_AGUA(Categoria.ACCESORIO, FactorClimatico.HUMEDO, FactorEstetico.CASUAL),
+  GAFAS(Categoria.ACCESORIO, FactorClimatico.TODOS, FactorEstetico.CASUAL),
   ANTEOJOS(Categoria.ACCESORIO, FactorClimatico.CALOR, FactorEstetico.CASUAL);
 
   private Categoria categoria;

@@ -9,23 +9,25 @@ public class Prenda {
   private String colorPrincipal;
   private String colorSecundario;
   private String material;
+  private Trama trama;
 
   /**
-   * Constructor de la clase prenda.Prenda.
+   * Constructor de la clase Prenda.
    *
    * @param nombre          Nombre de la prenda.
-   * @param tipo            prenda.Tipo de la prenda.
-   * @param colorPrincipal  prenda.Color principal de la prenda.
-   * @param colorSecundario prenda.Color secundario de la prenda.
-   * @param material        prenda.Material de la prenda.
+   * @param tipo            Tipo de la prenda.
+   * @param colorPrincipal  Color principal de la prenda.
+   * @param colorSecundario Color secundario de la prenda.
+   * @param material        Material de la prenda.
    */
   public Prenda(String nombre, Tipo tipo, String colorPrincipal,
-                String colorSecundario, String material) {
+                String colorSecundario, String material, Trama trama) {
     this.nombre = nombre;
     this.tipo = tipo;
     this.colorPrincipal = colorPrincipal;
     this.colorSecundario = colorSecundario;
     this.material = material;
+    this.trama = trama;
   }
 
 
@@ -60,6 +62,8 @@ public class Prenda {
     System.out.println("Material: " + material);
     System.out.println("---------------------");
   }
+
+
 
 
 }

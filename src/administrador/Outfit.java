@@ -12,7 +12,7 @@ public class Outfit {
   private Prenda accesorio;
 
   /**
-   * Constructor de la clase administrador.Outfit.
+   * Constructor de la clase Outfit.
    *
    * @param parteSuperior Prenda de la parte superior.
    * @param parteInferior Prenda de la parte inferior.
@@ -39,6 +39,5 @@ public class Outfit {
     System.out.println("Accesorio: ");
     accesorio.mostrarPrenda();
   }
-
 
 }

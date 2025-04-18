@@ -56,7 +56,6 @@ public class Armario {
     }
   }
 
-
   /**
    * Método para armar un outfit basado en el factor climático y estético.
    *
@@ -120,6 +119,5 @@ public class Armario {
   public void cargarPrendas(int cantidad) {
     prendas.addAll(generarLoteDePrendas(cantidad));
   }
-
 
 }

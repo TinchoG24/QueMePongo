@@ -2,10 +2,12 @@ package administrador;
 
 import factores.FactorClimatico;
 import factores.FactorEstetico;
-import prenda.Prenda;
-import prenda.Tipo;
 import java.util.List;
 import java.util.Scanner;
+import prenda.Prenda;
+import prenda.PrendaBuilder;
+import prenda.Tipo;
+import prenda.Trama;
 
 /**
  * administrador.QueMePongo class provides outfit suggestions based on the weather.
@@ -14,16 +16,21 @@ import java.util.Scanner;
 public class QueMePongo {
   Armario armario = new Armario(100);
 
+  String nombre = null;
+  String tipo = null;
+  String colorPrincipal = null;
+  String colorSecundario = null;
+  String material = null;
+
   /**
-   * funcion de Login simple user y pass ingreso con scanner
+   * Funcion de Login simple user y pass ingreso con scanner.
    */
   public void login() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter username: ");
     String username = scanner.nextLine();
     System.out.print("Enter password: ");
-    String password = scanner.nextLine();
-
+    scanner.nextLine();
     // For simplicity, we will assume the login is always successful
     System.out.println("Login successful for user: " + username);
 
@@ -35,7 +42,7 @@ public class QueMePongo {
    * 2. Register
    * 3. Cargar prenda.Prenda
    * 4. Mostrar Prendas
-   * 5. Generar administrador.Outfit
+   * 5. Generar Outfit
    * 6. Exit
    */
   public void menu() {
@@ -46,10 +53,11 @@ public class QueMePongo {
       System.out.println("Menu:");
       System.out.println("1. Login");
       System.out.println("2. Register");
-      System.out.println("3. Cargar prenda.Prenda");
-      System.out.println("4. Mostrar Prendas");
-      System.out.println("5. Generar Outfits");
-      System.out.println("6. Exit");
+      System.out.println("3. Cargar Prenda Atomica");
+      System.out.println("4. Cargar Prenda Builder");
+      System.out.println("5. Mostrar Prendas");
+      System.out.println("6. Generar Outfits");
+      System.out.println("7. Exit");
       System.out.print("Enter your choice: ");
       choice = scanner.nextInt();
 
@@ -62,32 +70,108 @@ public class QueMePongo {
           System.out.println("Proximamente...");
           break;
         case 3:
-          // Cargar prenda.Prenda logic here
+          // Cargar Prenda logic here
           cargarPrenda();
           break;
         case 4:
-          armario.mostrarPrendas();
+          // Cargar Prenda logic here
+          cargarPrendaBuilder();
           break;
         case 5:
+          armario.mostrarPrendas();
+          break;
+        case 6:
           // Generar Outfit basándose en factores climaticos y estetica
           generarOutfit();
           break;
-        case 6:
+        case 7:
           System.out.println("Exiting...");
           break;
         default:
           System.out.println("Invalid choice, please try again.");
       }
-    } while (choice != 6);
+    } while (choice != 7);
 
 
   }
 
+  /**
+   * Cargar una nueva prenda usando el builder.
+   */
+  private void cargarPrendaBuilder() {
+
+    Scanner scanner = new Scanner(System.in);
+
+    while (true) {
+      System.out.println("Cargar Prenda Builder:");
+      System.out.println("1. Ingresar nombre (actual: "
+          + (nombre != null ? nombre : "vacío") + ")");
+      System.out.println("2. Ingresar tipo (actual: "
+          + (tipo != null ? tipo : "vacío") + ")");
+      System.out.println("3. Ingresar color principal (actual: "
+          + (colorPrincipal != null ? colorPrincipal : "vacío") + ")");
+      System.out.println("4. Ingresar color secundario (actual: "
+          + (colorSecundario != null ? colorSecundario : "vacío") + ")");
+      System.out.println("5. Ingresar material (actual: "
+          + (material != null ? material : "vacío") + ")");
+      System.out.println("6. Finalizar y guardar prenda");
+      System.out.println("7. Volver al menú principal");
+      System.out.print("Seleccione una opción: ");
+      int opcion = scanner.nextInt();
+      scanner.nextLine(); // Consumir el salto de línea
+
+      switch (opcion) {
+        case 1:
+          System.out.print("Ingrese el nombre de la prenda: ");
+          nombre = scanner.nextLine();
+          break;
+        case 2:
+          System.out.print("Ingrese el tipo de la prenda: ");
+          tipo = scanner.nextLine();
+          break;
+        case 3:
+          System.out.print("Ingrese el color principal de la prenda: ");
+          colorPrincipal = scanner.nextLine();
+          break;
+        case 4:
+          System.out.print("Ingrese el color secundario de la prenda: ");
+          colorSecundario = scanner.nextLine();
+          break;
+        case 5:
+          System.out.print("Ingrese el material de la prenda: ");
+          material = scanner.nextLine();
+          break;
+        case 6:
+          try {
+            Prenda prenda = new PrendaBuilder()
+                .setNombre(nombre)
+                .setTipo(tipo != null ? Tipo.valueOf(tipo.toUpperCase()) : null)
+                .setMaterial(material)
+                .setColorPrincipal(colorPrincipal)
+                .setColorSecundario(colorSecundario)
+                .build();
+            System.out.println("Prenda creada exitosamente.");
+            armario.agregarPrenda(prenda);
+          } catch (Exception e) {
+            System.out.println("Error al crear la prenda: " + e.getMessage());
+          }
+          return;
+        case 7:
+          System.out.println("Volviendo al menú principal...");
+          return;
+        default:
+          System.out.println("Opción no válida, intente nuevamente.");
+      }
+    }
+
+  }
+
+  /**
+   * Generar un outfit basado en factores climaticos y esteticos.
+   */
   private void generarOutfit() {
 
-    /**
-     * Ingresar Factor climatico y esteticos
-     */
+    //Ingresar Factor climatico y esteticos
     Scanner scanner = new Scanner(System.in);
     System.out.print("Ingrese el clima (frio, calido, templado): ");
     String clima = scanner.nextLine();
@@ -95,10 +179,10 @@ public class QueMePongo {
     String estetica = scanner.nextLine();
     System.out.print("Ingrese la cantidad de outfits que quiere generar");
     int cantidadDeOutfits = scanner.nextInt();
-
     /*
-      System.out.print("Ingrese la actividad (trabajo, fiesta, deporte): ");
-      String actividad = scanner.nextLine();
+        Proximamente....
+        System.out.print("Ingrese la actividad (trabajo, fiesta, deporte): ");
+        String actividad = scanner.nextLine();
         System.out.print("Ingrese la temporada (verano, invierno, primavera, otoño): ");
         String temporada = scanner.nextLine();
         System.out.print("Ingrese la hora (dia, noche):");
@@ -119,7 +203,8 @@ public class QueMePongo {
       return;
     }
 
-    List<Outfit> outfitGenerados = armario.armarOutfits(FactorClimatico.valueOf(clima.toUpperCase()),
+    List<Outfit> outfitGenerados = armario.armarOutfits(
+        FactorClimatico.valueOf(clima.toUpperCase()),
         FactorEstetico.valueOf(estetica.toUpperCase()),
         cantidadDeOutfits);
 
@@ -136,41 +221,44 @@ public class QueMePongo {
   }
 
   /**
-   * Cargar una nueva prenda espeficando todos los campos
+   * Cargar una nueva prenda espeficando todos los campos.
    */
   public void cargarPrenda() {
 
-    Prenda prenda;
-
     Scanner scanner = new Scanner(System.in);
     System.out.print("Ingrese el nombre de la prenda: ");
-    String nombre = scanner.nextLine();
+    String nombre;
+    nombre = scanner.nextLine();
     System.out.print("Ingrese el tipo de la prenda: ");
-    String tipo = scanner.nextLine();
+    String tipo;
+    tipo = scanner.nextLine();
     System.out.print("Ingrese el color principal de la prenda: ");
-    String colorPrincipal = scanner.nextLine();
+    String colorPrincipal;
+    colorPrincipal = scanner.nextLine();
     System.out.print("Ingrese el color secundario de la prenda: ");
-    String colorSecundario = scanner.nextLine();
+    String colorSecundario;
+    colorSecundario = scanner.nextLine();
     System.out.print("Ingrese el material de la prenda: ");
-    String material = scanner.nextLine();
+    String material;
+    material = scanner.nextLine();
+    System.out.print("Ingrese la trama de la prenda: ");
+    String trama;
+    trama = scanner.nextLine();
 
-    /**
-     * Metodo para validar que el tipo de prenda es correcto parametro que paso a
-     * prenda.Tipo.valueOf(tipo.toUpperCase()) Try
-     * Proximamente se extiende a que el color y material sean correctos (Enum)
-     */
-    try {
-      Tipo.valueOf(tipo.toUpperCase());
-    } catch (IllegalArgumentException e) {
-      System.out.println("prenda.Tipo de prenda no valido");
+    //Validar Enums de prenda
+    if (!Utils.validarEnum(tipo, Tipo.class, "Tipo de prenda no valido")) {
+      return;
+    }
+    if (!Utils.validarEnum(trama, Trama.class, "Tipo de trama no valida")) {
       return;
     }
 
-    prenda = new Prenda(nombre,
+    Prenda prenda = new Prenda(nombre,
         Tipo.valueOf(tipo.toUpperCase()),
         colorPrincipal,
         colorSecundario,
-        material);
+        material,
+        Trama.valueOf(trama));
 
     armario.agregarPrenda(prenda);
 

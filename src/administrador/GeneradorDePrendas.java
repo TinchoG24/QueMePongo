@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import prenda.Prenda;
 import prenda.Tipo;
+import prenda.Trama;
 
 /**
  * CLase generadora de prendas
@@ -36,8 +37,11 @@ public class GeneradorDePrendas {
     String[] materiales = {"Algodón", "Lana", "Jean", "Cuero", "Poliéster", "Nylon", "Lino", "Seda"};
     String material = materiales[rand.nextInt(materiales.length)];
 
+    // Seleccionar una trama aleatoria
+    Trama trama = Trama.values()[rand.nextInt(Tipo.values().length)];
+
     // Crear una nueva prenda con el tipo, colores y material generados aleatoriamente
-    return new Prenda(nombre, tipo, colorPrimario, colorSecundario, material);
+    return new Prenda(nombre, tipo, colorPrimario, colorSecundario, material, trama);
   }
 
   /**
