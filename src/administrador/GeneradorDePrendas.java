@@ -38,7 +38,7 @@ public class GeneradorDePrendas {
     String material = materiales[rand.nextInt(materiales.length)];
 
     // Seleccionar una trama aleatoria
-    Trama trama = Trama.values()[rand.nextInt(Tipo.values().length)];
+    Trama trama = Trama.values()[rand.nextInt(Trama.values().length)];
 
     // Crear una nueva prenda con el tipo, colores y material generados aleatoriamente
     return new Prenda(nombre, tipo, colorPrimario, colorSecundario, material, trama);

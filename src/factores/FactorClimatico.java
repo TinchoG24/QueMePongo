@@ -8,6 +8,8 @@ public enum FactorClimatico {
   CALOR,
   LLUVIOSO,
   HUMEDO,
+  TEMPLADO,
+  CALIDO,
   TODOS;
 
 }

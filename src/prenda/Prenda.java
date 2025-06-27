@@ -30,7 +30,6 @@ public class Prenda {
     this.trama = trama;
   }
 
-
   public Tipo getTipo() {
     return tipo;
   }

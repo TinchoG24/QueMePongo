@@ -1,5 +1,6 @@
 package administrador;
 
+import clima.CondicionClimatica;
 import factores.FactorClimatico;
 import factores.FactorEstetico;
 import java.util.List;
@@ -13,8 +14,12 @@ import prenda.Trama;
  * administrador.QueMePongo class provides outfit suggestions based on the weather.
  * This is a simple implementation that returns a static outfit suggestion.
  */
+import clima.ServicioMeteorologico;
+import clima.ServicioAccuWeather;
+
 public class QueMePongo {
   Armario armario = new Armario(100);
+  ServicioMeteorologico servicioMeteorologico = new ServicioAccuWeather();
 
   String nombre = null;
   String tipo = null;
@@ -57,7 +62,8 @@ public class QueMePongo {
       System.out.println("4. Cargar Prenda Builder");
       System.out.println("5. Mostrar Prendas");
       System.out.println("6. Generar Outfits");
-      System.out.println("7. Exit");
+      System.out.println("7. Generar Outfit usando clima real");
+      System.out.println("8. Exit");
       System.out.print("Enter your choice: ");
       choice = scanner.nextInt();
 
@@ -85,12 +91,15 @@ public class QueMePongo {
           generarOutfit();
           break;
         case 7:
+          generarOutfitConClimaReal();
+          break;
+        case 8:
           System.out.println("Exiting...");
           break;
         default:
           System.out.println("Invalid choice, please try again.");
       }
-    } while (choice != 7);
+    } while (choice != 8);
 
 
   }
@@ -262,6 +271,40 @@ public class QueMePongo {
 
     armario.agregarPrenda(prenda);
 
+  }
+
+  private void generarOutfitConClimaReal() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Ingrese su ciudad: ");
+    String ciudad = scanner.nextLine();
+
+    CondicionClimatica clima = servicioMeteorologico.obtenerCondicion(ciudad);
+    double temperatura = clima.getTemperatura();
+    double probLluvia = clima.getProbabilidadLluvia();
+
+    // Determinar el factor climático según temperatura
+    FactorClimatico factorClimatico;
+    if (temperatura <= 15) {
+      factorClimatico = FactorClimatico.FRIO;
+    } else if (temperatura >= 25) {
+      factorClimatico = FactorClimatico.CALIDO;
+    } else {
+      factorClimatico = FactorClimatico.TEMPLADO;
+    }
+
+    // Elegimos estética casual por defecto
+    FactorEstetico estetico = FactorEstetico.CASUAL;
+
+    System.out.println("Clima detectado: " + factorClimatico + " (" + temperatura + "°C)");
+    System.out.println("Probabilidad de lluvia: " + probLluvia + "%");
+
+    List<Outfit> outfits = armario.armarOutfits(factorClimatico, estetico, 1);
+    if (outfits != null && !outfits.isEmpty()) {
+      System.out.println("Outfit recomendado:");
+      outfits.get(0).mostrarOutfit();
+    } else {
+      System.out.println("No se pudo generar un outfit con el clima actual.");
+    }
   }
 
 
